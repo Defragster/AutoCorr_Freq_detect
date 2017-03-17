@@ -26,9 +26,7 @@ Major optimization differences for this n-Squared process:
  GetFreq for AltoSaxVib_C4 ::  
 -------- Frequency Detected = 256.40 
 -	FULL us= 13423	DONE us= 7660	sample len= 250
--------- Frequency Detected = 256.40
 -	FULL us= 22538	DONE us= 10385	sample len= 325
--------- Frequency Detected = 256.40 
 -	FULL us= 216564	DONE us= 35491	sample len= 1014
 
 GetFreq with _ORIGINAL_ CODE for  AltoSaxVib_C4 ::  
@@ -38,9 +36,7 @@ GetFreq with _ORIGINAL_ CODE for  AltoSaxVib_C4 ::
  GetFreq for C4 ::  
 -------- Frequency Detected = 259.41
 -	FULL us= 13416	DONE us= 7580	sample len= 250
--------- Frequency Detected = 259.41
 -	FULL us= 22542	DONE us= 10287	sample len= 325
--------- Frequency Detected = 259.41
 -	FULL us= 198276	DONE us= 33518	sample len= 970
 
 GetFreq with _ORIGINAL_ CODE for  C4 ::  
@@ -50,9 +46,7 @@ GetFreq with _ORIGINAL_ CODE for  C4 ::
  GetFreq for Guitar_C5 ::  
 -------- Frequency Detected = 512.79
 -	FULL us= 13410	DONE us= 4272	sample len= 250
--------- Frequency Detected = 512.79
 -	FULL us= 22534	DONE us= 5653	sample len= 325
--------- Frequency Detected = 512.79
 -	FULL us= 216988	DONE us= 18374	sample len= 1015
 
 GetFreq with _ORIGINAL_ CODE for  Guitar_C5 ::  
@@ -62,9 +56,7 @@ GetFreq with _ORIGINAL_ CODE for  Guitar_C5 ::
  GetFreq for Piano_C4 ::  
 -------- Frequency Detected = 259.41
 -	FULL us= 13422	DONE us= 7586	sample len= 250
--------- Frequency Detected = 259.41
 -	FULL us= 22541	DONE us= 10283	sample len= 325
--------- Frequency Detected = 259.41
 -	FULL us= 216565	DONE us= 35101	sample len= 1014
 
 GetFreq with _ORIGINAL_ CODE for  Piano_C4 ::  
