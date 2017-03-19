@@ -24,9 +24,10 @@ void setup()
 {
   Serial.begin(115200);
   while (!Serial);
-  Serial.println("\n HI _QUAD_");
+  Serial.println("\n HI _QUAD_ vv");
 }
 
+int do_debug = 1;
 void loop()
 {
   // put your main code here, to run repeatedly:
@@ -37,16 +38,22 @@ void loop()
     Serial.print(rawData_sz[jj]);
     Serial.println(" ::  ");
     GetFreq(rawData[jj], rawData_len[jj]);
-    Serial.print("GetFreq with _ORIGINAL_ CODE for  ");
+    Serial.print("\n GetFreq with _ORIGINAL_ CODE for  ");
     Serial.print(rawData_sz[jj]);
     Serial.print(" ::  ");
     Original(rawData[jj], rawData_len[jj]);
+  }
+  if (jj > 3)
+  {
+    do_debug = 0;
+    jj = 0;
   }
 }
 
 void GetFreq(unsigned char rawData[], uint16_t lenP)
 {
   int16_t diffs[2000];
+  int now_done = 0;
   int ii, kk;
   long sum, sum_old;
   int thresh = 0;
@@ -82,7 +89,8 @@ void GetFreq(unsigned char rawData[], uint16_t lenP)
         pd_3_ii = 0;
         period = ii;
         pd_state = 3; // Once this is set it won't change - so leave
-        if (0)
+        now_done = 1;
+        if (2 <= do_debug)
         {
           Serial.print(ii);
           Serial.print("=ii _ kk=");
@@ -94,7 +102,7 @@ void GetFreq(unsigned char rawData[], uint16_t lenP)
       {
         if (pd_3_ii < 5)
         {
-          if (0)
+          if (2 <= do_debug)
           {
             Serial.print(ii);
             Serial.print("_#3_");
@@ -119,15 +127,21 @@ void GetFreq(unsigned char rawData[], uint16_t lenP)
       freq_per = sample_freq / period;
     else
       freq_per = 0;
-    Serial.print("-------- Frequency Detected = ");
-    Serial.print(freq_per);
-    Serial.println("    <<<<<<<<<<<<<<<<<<<<<<<<");
-    Serial.print("\tFULL us= ");
-    Serial.print(timr);
+    if (do_debug)
+    {
+      Serial.print("-------- Frequency Detected = ");
+      Serial.print(freq_per);
+      Serial.println("    <<<<<<<<<<<<<<<<<<<<<<<<");
+      Serial.print("\tFULL us= ");
+      Serial.print(timr);
+    }
     Serial.print("\tDONE us= ");
     Serial.print(timr2);
-    Serial.print("\tsample len= ");
-    Serial.println(len);
+    if (do_debug)
+    {
+      Serial.print("\tsample len= ");
+      Serial.println(len);
+    }
     if (len == lenP)
       break;
     if (hld_freq_per == freq_per && 0 != freq_per)
@@ -183,13 +197,19 @@ void Original(unsigned char rawData[], uint16_t len)
   timr = micros() - timr;
   // Frequency identified in kHz
   freq_per = sample_freq/period;
-  Serial.print("\n-------- Frequency Detected = ");
-  Serial.print(freq_per);
-  Serial.println("    <<<<<<<<<<<<<<<<<<<<<<<<");
-  Serial.print("\tFULL us= ");
-  Serial.print(timr);
+  if (do_debug)
+  {
+    Serial.print("\n-------- Frequency Detected = ");
+    Serial.print(freq_per);
+    Serial.println("    <<<<<<<<<<<<<<<<<<<<<<<<");
+    Serial.print("\tFULL us= ");
+    Serial.print(timr);
+  }
   Serial.print("\tDONE us= ");
   Serial.print(timr2);
-  Serial.print("\tsample len= ");
-  Serial.println(len);
+  if (do_debug)
+  {
+    Serial.print("\tsample len= ");
+    Serial.println(len);
+  }
 }
